@@ -14,6 +14,6 @@ class DropColumns(BaseEstimator, TransformerMixin):
         datac = X.copy()
         #Borramos registros con datos faltantes para tener data mas certera ya que promediar cualquier valor no es buena practica
         #Registro incompletos 685 (3.35%) de la total 20499 (100%)
-        dataf = datac.dropna()       
+        dataf = datac.dropna(subset=self.columns, inplace=True)       
         # Devolvemos un nuevo dataframe de 19814 Registros con datos completos sin las columnas no deseadas sin valoren nan
         return dataf.drop(labels=self.columns, axis='columns')
