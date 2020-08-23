@@ -11,9 +11,9 @@ class DropColumns(BaseEstimator, TransformerMixin):
 
     def transform(self, X):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
-        data = X.copy()
+        datac = X.copy()
         #Borramos registros con datos faltantes para tener data mas certera ya que promediar cualquier valor no es buena practica
         #Registro incompletos 685 (3.35%) de la total 20499 (100%)
-        data.dropna(subset=self.columns, inplace=True)
+        dataf = datac.dropna()       
         # Devolvemos un nuevo dataframe de 19814 Registros con datos completos sin las columnas no deseadas sin valoren nan
-        return data.drop(labels=self.columns, axis='columns')
+        return dataf.drop(labels=self.columns, axis='columns')
